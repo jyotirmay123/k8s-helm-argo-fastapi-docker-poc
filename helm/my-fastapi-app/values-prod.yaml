@@ -1,0 +1,2 @@
+configMap:
+  EXAMPLE_VARIABLE: "Hello from PROD ConfigMap!"

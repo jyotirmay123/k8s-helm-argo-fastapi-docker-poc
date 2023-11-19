@@ -1,0 +1,11 @@
+replicaCount: 1
+image:
+  repository: my-fastapi-app
+  tag: 201
+  pullPolicy: IfNotPresent
+service:
+  name: my-fastapi-app
+  type: ClusterIP
+  port: 80
+configMap:
+  EXAMPLE_VARIABLE: "Hello from ConfigMap!"

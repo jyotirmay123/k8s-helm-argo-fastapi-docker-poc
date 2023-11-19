@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "my-fastapi-app.fullname" . }}
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: localhost
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ include "my-fastapi-app.fullname" . }}
+                port:
+                  number: {{ .Values.service.port }}
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 80
